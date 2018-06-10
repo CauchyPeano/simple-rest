@@ -1,9 +1,14 @@
 plugins {
     java
+    application
 }
 
 group = "de.konoplyanko.test"
 version = "1.0-SNAPSHOT"
+
+application {
+    mainClassName = "de.konoplyanko.test.rest.WebApplication"
+}
 
 repositories {
     mavenCentral()
@@ -19,4 +24,11 @@ dependencies {
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+task<JavaExec>("runProcessingJob") {
+    description = "Runs processing job, need to pass as argument file name"
+    classpath = java.sourceSets["main"].java
+    main = "de.konoplyanko.test.processing.ProcessingJob"
+    args(listOf(""))
 }

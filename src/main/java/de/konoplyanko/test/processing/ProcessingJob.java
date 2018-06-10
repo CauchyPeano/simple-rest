@@ -34,7 +34,6 @@ public class ProcessingJob {
         List<String> output = processFile(strings);
         writeResult(path, output);
 
-
     }
 
     private static void writeResult(Path path, List<String> output) {

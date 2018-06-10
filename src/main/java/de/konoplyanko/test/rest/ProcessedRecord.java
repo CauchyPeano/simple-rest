@@ -1,4 +1,4 @@
-package de.konoplyanko.test.processing;
+package de.konoplyanko.test.rest;
 
 public class ProcessedRecord {
 
@@ -16,5 +16,10 @@ public class ProcessedRecord {
 
     public String getMake() {
         return make;
+    }
+
+    @Override
+    public String toString() {
+        return vin + "," + make;
     }
 }

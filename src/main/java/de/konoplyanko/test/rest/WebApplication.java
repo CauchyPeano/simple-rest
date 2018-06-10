@@ -1,6 +1,5 @@
 package de.konoplyanko.test.rest;
 
-import de.konoplyanko.test.processing.ProcessedRecord;
 import spark.Request;
 import spark.Response;
 

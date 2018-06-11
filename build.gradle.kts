@@ -21,14 +21,19 @@ dependencies {
     testCompile("junit", "junit", "4.12")
 }
 
+
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 task<JavaExec>("runProcessingJob") {
-    description = "Runs processing job, need to pass as argument file name"
-    classpath = java.sourceSets["main"].java
-    main = "de.konoplyanko.test.processing.ProcessingJob"
-    args(listOf(""))
+    if (project.hasProperty("vehicles")) {
+        classpath = java.sourceSets["main"].runtimeClasspath
+        description = "Runs processing job, need to pass as argument file name"
+        main = "de.konoplyanko.test.processing.ProcessingJob"
+        args(listOf(project.property("vehicles")))
+    } else {
+        println("Please provide parameter `vehicles` like following: -Pvehicles=C:\\dev\\simple-rest\\src\\test\\resources\\vehicles.csv")
+    }
 }
